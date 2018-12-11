@@ -9,8 +9,8 @@ import { SecondComponent } from './second/second.component';
 import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
-    { path: 'first', component: FirstComponent},
-    { path: 'second',      component: SecondComponent }
+    { path: 'app/first', component: FirstComponent},
+    { path: 'app/second',      component: SecondComponent }
 ];
 
 @NgModule({

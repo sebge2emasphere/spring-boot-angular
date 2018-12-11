@@ -1,4 +1,4 @@
-package com.emasphere.angular.poc.gateway;
+package com.emasphere.angular.poc.gateway.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
