@@ -1,0 +1,11 @@
+<form (ngSubmit)="finishSelection()">
+    <mat-form-field>
+        <input type="text" placeholder="Tenant" aria-label="Tenant" matInput [formControl]="tenantNameInput"
+               [matAutocomplete]="auto" autofocus>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="toTenantLabel" (optionSelected)="finishSelection()">
+            <mat-option *ngFor="let availableTenant of availableFilteredOutTenants | async" [value]="availableTenant">
+                {{availableTenant.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

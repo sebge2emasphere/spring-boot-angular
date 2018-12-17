@@ -1,0 +1,35 @@
+<mat-card *ngIf="user == null">
+    <form #f="ngForm" (ngSubmit)="authenticate(f)">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-error *ngIf="authenticationFailure">
+            Please check your credentials.
+        </mat-error>
+        <mat-card-content>
+            <table cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input matInput placeholder="Password" [(ngModel)]="password" type="password"
+                                   name="password" required>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <mat-spinner [style.display]="authenticating ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="authenticating">Login</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+
+<login-tenant-selector *ngIf="requireTenantSelection()" [currentUser]="user" (selectedTenant)="onSelectedTenant($event)"></login-tenant-selector>

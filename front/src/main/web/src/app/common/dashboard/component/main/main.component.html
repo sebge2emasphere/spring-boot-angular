@@ -1,0 +1,34 @@
+<div id="menu">
+    <div *ngFor="let availableMenu of availableMenus">
+        <a  [routerLink]="availableMenu.id">{{availableMenu.name}}</a>
+    </div>
+
+    <br/>
+
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>POC</span>
+            <ng-template ngIf="true">
+                <button mat-button [matMenuTriggerFor]="menu"
+                        #matMenuTrigger="matMenuTrigger"
+                        (mouseenter)="matMenuTrigger.openMenu()">{{currentMenu.name}}
+                </button>
+                <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                    <div (mouseleave)="matMenuTrigger.closeMenu()">
+                        <button mat-menu-item
+                                [routerLink]="[currentMenu.id, currentMenu.sections[0].id]">
+                            {{currentMenu.sections[0].name}}
+                        </button>
+                    </div>
+                </mat-menu>
+            </ng-template>
+            <span class="example-spacer"></span>
+
+            <a routerLink="/logout">
+                <mat-icon>exit_to_app</mat-icon>
+            </a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+<router-outlet></router-outlet>

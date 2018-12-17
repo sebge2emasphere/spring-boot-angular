@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.http
-            .get<{ message: string }>("/api/my-service/")
+            .get<{ message: string }>("/my-service/message")
             .subscribe(
                 observer => {
                     this._message = observer.message;
